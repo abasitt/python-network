@@ -7,8 +7,11 @@ import telnetlib
 user = input("Enter your username: ")
 password = getpass.getpass()
 
-for n in range (31,34):
-	HOST = "192.168.122." + str(n)
+inventorylist = open('inventory')
+
+for n in inventorylist:
+	print("configure switch " + n)
+	HOST = n
 	tn = telnetlib.Telnet(HOST)
 
 	tn.read_until(b"Username: ")
