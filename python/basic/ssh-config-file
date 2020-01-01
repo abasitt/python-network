@@ -1,0 +1,10 @@
+int g0/0
+switchport
+switchport mode trunk
+description *interswitch links*
+
+int g1/0
+switchport
+switchport mode access
+switchport access vlan 5
+description *endpoint ports*
