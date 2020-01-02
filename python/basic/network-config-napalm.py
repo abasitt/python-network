@@ -2,9 +2,13 @@ import json
 
 from napalm import get_network_driver
 
-driver = get_network_driver('ios')
-ios_sw = driver ('192.168.122.31', 'admin', 'cisco')
-ios_sw.open()
+device_list = [['192.168.122.31','192.168.122.32','192.168.122.33']]
 
-ios_output = ios_sw.get_bgp_neighbors()
-print (json.dumps(ios_output, indent=4))
+
+for device in device_list:
+    driver = get_network_driver('ios')
+    ios_sw = driver (device, 'admin', 'cisco')
+    ios_sw.open()
+    ios_output = ios_sw.get_bgp_neighbors()
+    print (json.dumps(ios_output, indent=4))
+    ios_sw.close()
